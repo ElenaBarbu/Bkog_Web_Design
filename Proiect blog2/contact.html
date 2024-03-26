@@ -50,7 +50,45 @@
                 sidebar.style.display='none'       
             } /* dispare sidebar-ul atunci cand se apasa pe iconita x*/
         </script>
-        <h1>Contact page</h1>
+        <h1>Contact me</h1>
+        <form>
+            <p>If you have any questions or suggestions complete the following form and I will reply as soon as possible. </p>
+            <p>
+                <label>Salutation
+                <select name="salutation">
+                <option>--None--</option>
+                <option>Mr.</option>
+                <option>Mrs.</option>
+                <option>Ms.</option>
+                <option>Miss</option>
+                </select>
+                </label>
+                </p>
+            <p>
+            <label>Profession
+            <select name="profession">
+            <option>--None--</option>
+            <option>Student</option>
+            <option>Healthcare worker</option>
+            <option>Other <input name="otherProfession"/></option>
+            
+        </select>
+        </label>
+        </p>
+        <p> <label>First name: <input name="firstName" /></label></p>
+        <p><label>Last name: <input name="lastName" /></label></p>
+        <p>Gender:
+        <label><input type="radio" name="gender" value="male" />Male</label>
+        <label><input type="radio" name="gender" value="female" />Female</label>
+        </p>
+        <p><label>Email:<input type="email" name="email" /></label></p>
+        <p><label> Wtrite the message: <textarea name="address" cols="30" rows="3"> </textarea>
+        </label></p>
+        <p><button type="submit">Send</button></p>
+        </form>
+        
+        
+        <footer> <p>&copy; 2024 Elena Barbu - Blog</p></footer>
     </body>
 
 </html>

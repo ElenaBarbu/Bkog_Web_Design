@@ -103,6 +103,7 @@ nav a:hover{
     flex-wrap: wrap; /*pentru a trece boxurile una sub alta pe ecrane mai mici*/
     
 }
+.about-container{animation:fadeIn 2s;}
 
 .about-box1{
     height: 250px;
@@ -112,7 +113,7 @@ nav a:hover{
 .about-box2{
     height: 300px;
     width: 300px;
-    background-color:rgba(243, 222, 203, 0.9);
+    background-color:rgba(255,255,255,0.7);
     box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
 
 }
@@ -132,8 +133,7 @@ h1{
 p{
     font-size: 14;
     font-style:normal;
-    word-break:break-all;
-    font-weight: 200;
+    font-weight: 400;
     text-indent: 20px;
     padding: 20px; /*Pt ca textul sa nu mearga pama la marginile box-ului*/
     text-align: justify;
@@ -144,8 +144,16 @@ p{
     margin:30px;
     font-weight: 800;
     color:rgba(58, 58, 57, 1);
-    width:100%;
+    width:90%;
+    word-break:keep-all; /*pentru a muta tot cuvantul in urmatorul rand*/
 }
+.healthcare-page-title{animation:fadeIn 2s;}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  .healthcare-container{animation:fadeIn 3s}/*pentru a face textul si posturile sa apara dupa cateva secunde*/
+  
 
 
 .healthcare-container{
@@ -160,8 +168,9 @@ p{
     flex-direction: row; 
     align-items: center; /*aliniaza pe verticala*/
     flex-wrap: wrap; /*pentru a trece boxurile una sub alta pe ecrane mai mici*/
-    background-color: rgba(255,255,255,0.7);;
+    background-color: rgba(255,255,255,0.7);
     /*float:left;*/
+    overflow: hidden;
 }
 
 .healthcare-containe .healthcare-image{
@@ -198,18 +207,71 @@ h2{
     text-decoration: none; /*pentru a elimina underline*/
     padding:.5rem 1rem;
     background-color:rgba(229, 178, 161, 1) ;
+
     color: rgba(2, 57, 99,1);
     font-weight: 700;
     border: 1px solid transparent;
     border-radius: .25rem; /* sa nu mai fie ascutite colturile*/
+    transition:transform 0.3s, background-color 0.3s ease,color 0.3s;
 }
 
 .read-more-button:hover{
+    /*transform:translateY(-5px);*/
     color:rgb(4, 109, 189);
-} /*atunci cand aduci mouseul deasupra butonului, se schimba culoarea textului*/
+    background-color: rgb(220, 138, 110);
+} /*atunci cand aduci mouseul deasupra butonului, se schimba culoarea textului si a backgroundului */
 
+@media(max-width:750px){
+    .healthcare-container{
+        flex flex-direction:column;
+    }
+}
+/*----------------Healthcare- Blood presure---------------------------------*/
 
+.healthcare-blood-pressure-container{
+    display:flex;
+    height:30%; /* POATE TREBUIE MODIFICAT*/
+    flex-direction: row; 
+    align-items: center; /*aliniaza pe verticala*/
+    justify-content: center; 
+    margin-bottom: 2%; 
 
+}
+
+.blood-pressure-tabel{
+    border-collapse: collapse;/*lasa mai putin spatiu intre celule*/
+    margin:25px 0;
+    font-size:0.9em;
+    min-width:400px;
+}
+
+.healthcare-blood-pressure2-container{
+    background-color: rgba(237, 211, 201,0.7);
+    display:flex;
+    height:30%; /* POATE TREBUIE MODIFICAT*/
+    width:40%;
+    min-width: 400px;
+    flex-direction: row; 
+    align-items: center; /*aliniaza pe verticala*/
+    justify-content: center; 
+    margin-bottom: 2%;
+}
+.blood-pressure-tabel thead tr{
+    color:rgb(98, 20, 4);
+    text-align: left;
+    font-weight: bold;
+}
+.blood-pressure-tabel th,
+.blood-pressure-tabel td{
+    padding: 12px 15px;
+}
+
+.blood-pressure-tabel tbody tr{
+    border-bottom: 1px solid #dddd;
+}
+.blood-pressure-tabel tbody tr:nth-of-type(even){
+    background-color: #f3f3f3;
+}
 
 
 
