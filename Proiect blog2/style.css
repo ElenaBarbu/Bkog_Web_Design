@@ -91,6 +91,69 @@ nav a:hover{
 }/*cand intram de la telefon si are latimea <=400px atunci vrem ca sidebar sa ocupe tot ecranul*/
 
 
+/*---------------postarile din main--------------------*/
+.main-title{
+    margin-top:30px;
+    font-weight: 800;
+    color:rgba(58, 58, 57, 1);
+    width:90%;
+    word-break:keep-all; /*pentru a muta tot cuvantul in urmatorul rand*/
+    text-align: center;
+}
+.main-title{animation:fadeIn 2s;}
+.post-row{
+    margin-top:5%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+} /*randul pe care vor fi puse posturile*/
+
+.posts{
+    width:95%;/*el a pus 80%*/
+    margin:auto;
+    text-align: center;
+    padding-top:20px;
+}
+.post-col{
+    flex-basis: 31%;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    text-align: left;
+    background-color: rgba(255,255,255,0.7);
+    transition:0.5s;
+}
+
+.post-col:hover{
+    box-shadow: 0 0 20px 0px rgba(0,0,0,0.7);
+}
+.post-col img{
+    width: 100%;
+    height: 75%;
+    border-radius: 10px;
+}
+.post-col-text{
+    margin-top:16px;
+    margin-bottom: 15px;
+    text-align: center;
+    align-items: center;
+    transition:0.3s;
+    color: black;
+    text-decoration: none;
+    font-weight: 700;
+
+}
+.post-col{animation:fadeIn 2s;}
+.post-col-text:hover{
+    color: rgb(33, 30, 79);
+    text-decoration: underline;
+}
+@media(max-width:700px){
+    .post-row{
+        flex-direction: column;
+    }
+}
+
+
 
 /*------------------------About----------------------------*/
 .about-container{
@@ -221,17 +284,19 @@ h2{
     background-color: rgb(220, 138, 110);
 } /*atunci cand aduci mouseul deasupra butonului, se schimba culoarea textului si a backgroundului */
 
-@media(max-width:750px){
+@media(max-width:740px){
     .healthcare-container{
         flex flex-direction:column;
+
     }
+    
 }
 /*----------------Healthcare- Blood presure---------------------------------*/
 
 .healthcare-blood-pressure-container{
     display:flex;
     height:30%; /* POATE TREBUIE MODIFICAT*/
-    flex-direction: row; 
+    /* flex-direction: column; pentru a pune tabelul in centrul paginiii?? */
     align-items: center; /*aliniaza pe verticala*/
     justify-content: center; 
     margin-bottom: 2%; 
@@ -240,9 +305,11 @@ h2{
 
 .blood-pressure-tabel{
     border-collapse: collapse;/*lasa mai putin spatiu intre celule*/
-    margin:25px 0;
+    align-items: center;
+    margin:25px auto;
     font-size:0.9em;
     min-width:400px;
+    
 }
 
 .healthcare-blood-pressure2-container{
