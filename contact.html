@@ -21,14 +21,14 @@
                 <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
                 <li><a href="main.html"> HOME</a></li>
                 <li><a href="about.html"> ABOUT</a></li>
-                <li><a href="products.html"> PRODUCTS</a></li>
+                <li><a href="gallery.html"> GALLERY</a></li>
                 <li><a href="healtcare.html"> HEALTHCARE TIPS</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
             </ul>
             <ul>
                 <li class="hideOnMobile"><a href="main.html"> HOME</a></li>
                 <li class="hideOnMobile"><a href="about.html"> ABOUT</a></li>
-                <li class="hideOnMobile"><a href="products.html"> PRODUCTS</a></li>
+                <li class="hideOnMobile"><a href="gallery.html"> GALLERY</a></li>
                 <li class="hideOnMobile"><a href="healtcare.html"> HEALTHCARE TIPS</a></li>
                 <li class="hideOnMobile"><a href="contact.html">CONTACT</a></li>
                 <!---adaugi item pentru acea iconita de meniu -->
@@ -53,7 +53,7 @@
 
         
         <h1>Contact me</h1>
-        <form>
+        <form name="ContactForm" onsubmit="sendEmail(); reset();return false; ">
             <p>If you have any questions or suggestions complete the following form and I will reply as soon as possible. </p>
             <p>
                 <label>Salutation
@@ -72,7 +72,7 @@
             <option>--None--</option>
             <option>Student</option>
             <option>Healthcare worker</option>
-            <option>Other <input name="otherProfession"/></option>
+            <option>Other<input name="otherProfession" class="other_profession" onclick=other_prof_funct()/></option>
             
         </select>
         </label>
@@ -83,14 +83,65 @@
         <label><input type="radio" name="gender" value="male" />Male</label>
         <label><input type="radio" name="gender" value="female" />Female</label>
         </p>
-        <p><label>Email:<input type="email" name="email" /></label></p>
-        <p><label> Wtrite the message: <textarea name="address" cols="30" rows="3"> </textarea>
+        <p><label>Email:<input type="email" name="email" id="email" required pattern="[a-zA-Z0-9+_.\-]+@[a-zA-Z0-9.\-]+"/></label></p>
+        <p><label> Wtrite the message: <textarea name="message" cols="30" rows="3"> </textarea>
         </label></p>
-        <p><button type="submit">Send</button></p>
+        <p><button type="submit" onclick=contactDataValidation()>Send your message</button></p>
         </form>
         
         
         <footer> <p>&copy; 2024 Elena Barbu - Blog</p></footer>
+
+
+
+        <script>
+            function other_prof_funct(){ //cauta unde sa o pui ????
+                let prof1=document.forms["ContactForm"]["profession"].value;
+                if(prof1=="Other"){
+                    other_profession.style.display='flex';
+                }
+            }    
+        </script>
+
+        <script>
+            function contactDataValidation(form){ // functie care daca utilizatorul nu a introdus numele si adresa de e-mail va afisa o avertizare
+                let n=document.forms["ContactForm"]["firstName"].value;
+                let ln=document.forms["ContactForm"]["lastName"].value;
+                let em=document.forms["ContactForm"]["email"].value;
+                let sal=document.forms["ContactForm"]["salutation"].value;
+                let prof1=document.forms["ContactForm"]["profession"].value;
+                let prof2=document.forms["ContactForm"]["otherProfession"].value;
+                let gen=document.forms["ContactForm"]["gender"].value;
+                let mes=document.forms["ContactForm"]["message"].value;
+
+
+                if(n=="" || ln=="" || em==""){ 
+                    alert("First name, last name and e-mail section must be filled out ");
+                    return false;
+                }
+               // if(prof1 == "Other"){
+                    
+               // }
+            }
+        </script>
+
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+        <script>
+            function sendEmail(){
+                Email.send({
+                    Host : "smtp.elasticemail.com",
+                    Username : "elena.barbu1997@gmail.com",
+                    Password : "70AD3A757D134F7EFBB3C525965C43F75ECA",
+                    To : 'elena.barbu1997@gmail.com',
+                    From : document.getElementById("email").value,
+                    Subject : "New contact form",
+                    Body : "And this is the body"
+                }).then(
+                message => alert(message)
+                );
+            }
+        </script>
     </body>
 
 </html>
