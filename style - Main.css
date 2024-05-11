@@ -96,7 +96,7 @@ nav a:hover{
     margin-top:30px;
     font-weight: 800;
     color:rgba(58, 58, 57, 1);
-    width:90%;
+    /*width:90%;*/
     word-break:keep-all; /*pentru a muta tot cuvantul in urmatorul rand*/
     text-align: center;
 }
