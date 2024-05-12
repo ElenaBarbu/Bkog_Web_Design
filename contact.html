@@ -51,97 +51,133 @@
             } /* dispare sidebar-ul atunci cand se apasa pe iconita x*/
         </script>
 
-        
-        <h1>Contact me</h1>
-        <form name="ContactForm" onsubmit="sendEmail(); reset();return false; ">
-            <p>If you have any questions or suggestions complete the following form and I will reply as soon as possible. </p>
-            <p>
-                <label>Salutation
-                <select name="salutation">
+        <!-- <div class="Container">
+            <form name="ContactForm" onsubmit="sendEmail(); reset();return false; ">
+                <h1>Contact me</h1>
+                <p>If you have any questions or suggestions complete the following form and I will reply as soon as possible. </p>
+                <p>
+                    <label>Salutation
+                    <select name="salutation">
+                    <option>--None--</option>
+                    <option>Mr.</option>
+                    <option>Mrs.</option>
+                    <option>Ms.</option>
+                    <option>Miss</option>
+                    </select>
+                    </label>
+                    </p>
+                <p>
+                <label>Profession
+                <select name="profession">
                 <option>--None--</option>
-                <option>Mr.</option>
-                <option>Mrs.</option>
-                <option>Ms.</option>
-                <option>Miss</option>
-                </select>
-                </label>
-                </p>
-            <p>
-            <label>Profession
-            <select name="profession">
-            <option>--None--</option>
-            <option>Student</option>
-            <option>Healthcare worker</option>
-            <option>Other<input name="otherProfession" class="other_profession" onclick=other_prof_funct()/></option>
+                <option>Student</option>
+                <option>Healthcare worker</option>
+                <option>Other<input name="otherProfession" class="other_profession" onclick=other_prof_funct()/></option>
+                
+            </select>
+            </label>
+            </p>
+             <p> <label>First name: <input name="firstName" /></label></p>
+            <p><label>Last name: <input name="lastName" /></label></p> 
+
+            <input type="text" id="firstName", placeholder="First Name">
+            <input type="text" id="laststName", placeholder="Last Name">
+            <p>Gender:
+            <label><input type="radio" name="gender" value="male" />Male</label>
+            <label><input type="radio" name="gender" value="female" />Female</label>
+            </p>
             
-        </select>
-        </label>
-        </p>
-        <p> <label>First name: <input name="firstName" /></label></p>
-        <p><label>Last name: <input name="lastName" /></label></p>
-        <p>Gender:
-        <label><input type="radio" name="gender" value="male" />Male</label>
-        <label><input type="radio" name="gender" value="female" />Female</label>
-        </p>
-        <p><label>Email:<input type="email" name="email" id="email" required pattern="[a-zA-Z0-9+_.\-]+@[a-zA-Z0-9.\-]+"/></label></p>
-        <p><label> Wtrite the message: <textarea name="message" cols="30" rows="3"> </textarea>
-        </label></p>
-        <p><button type="submit" onclick=contactDataValidation()>Send your message</button></p>
-        </form>
-        
-        
-        <footer> <p>&copy; 2024 Elena Barbu - Blog</p></footer>
+            <p><label>Email:<input type="email" name="email" id="email" required pattern="[a-zA-Z0-9+_.\-]+@[a-zA-Z0-9.\-]+"/></label></p>
+            <p><label> Wtrite the message: <textarea name="message" cols="30" rows="3"> </textarea>
+            </label></p>
+            <p><button type="submit" onclick=contactDataValidation()>Send your message</button></p>
+            </form>
+            
+            
+            <footer> <p>&copy; 2024 Elena Barbu - Blog</p></footer>
 
 
 
-        <script>
-            function other_prof_funct(){ //cauta unde sa o pui ????
-                let prof1=document.forms["ContactForm"]["profession"].value;
-                if(prof1=="Other"){
-                    other_profession.style.display='flex';
+            <script>
+                function other_prof_funct(){ //cauta unde sa o pui ????
+                    let prof1=document.forms["ContactForm"]["profession"].value;
+                    if(prof1=="Other"){
+                        other_profession.style.display='flex';
+                    }
+                }    
+            </script>
+
+            <script>
+                function contactDataValidation(form){ // functie care daca utilizatorul nu a introdus numele si adresa de e-mail va afisa o avertizare
+                    let n=document.forms["ContactForm"]["firstName"].value;
+                    let ln=document.forms["ContactForm"]["lastName"].value;
+                    let em=document.forms["ContactForm"]["email"].value;
+                    let sal=document.forms["ContactForm"]["salutation"].value;
+                    let prof1=document.forms["ContactForm"]["profession"].value;
+                    let prof2=document.forms["ContactForm"]["otherProfession"].value;
+                    let gen=document.forms["ContactForm"]["gender"].value;
+                    let mes=document.forms["ContactForm"]["message"].value;
+
+
+                    if(n=="" || ln=="" || em==""){ 
+                        alert("First name, last name and e-mail section must be filled out ");
+                        return false;
+                    }
+                // if(prof1 == "Other"){
+                        
+                // }
                 }
-            }    
-        </script>
+            </script>
 
+            <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+            <script>
+                function sendEmail(){
+                    Email.send({
+                        Host : "smtp.elasticemail.com",
+                        Username : "elena.barbu1997@gmail.com",
+                        Password : "70AD3A757D134F7EFBB3C525965C43F75ECA",
+                        To : 'elena.barbu1997@gmail.com',
+                        From : document.getElementById("email").value,
+                        Subject : "New contact form",
+                        Body : "And this is the body"
+                    }).then(
+                    message => alert(message)
+                    );
+                }
+            </script>
+        </div>     -->
+
+        <div class="container">
+            <div class="contact-box">
+                <div class="left"></div>
+                <form class="contactForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="return contactDataValidation()">
+                    <h2>Contact Us</h2>
+                    
+                    <input type="hidden" name="access_key" value="21e3b448-1960-4a5d-9176-88ef4bb49061">
+
+                    <input type="text" name="First name" class="field" placeholder="First Name">
+                    <input type="text" name="Last name" class="field" placeholder="Last Name">
+                    <input type="text" name= "e-mail" class="field" placeholder="Email">
+                    <textarea placeholder="Message" name="Message" class="field"></textarea>
+                    <button class="Button" onclick=contactDataValidation()>Send</button>
+                </form>
+            </div>
+        </div>
         <script>
-            function contactDataValidation(form){ // functie care daca utilizatorul nu a introdus numele si adresa de e-mail va afisa o avertizare
-                let n=document.forms["ContactForm"]["firstName"].value;
-                let ln=document.forms["ContactForm"]["lastName"].value;
-                let em=document.forms["ContactForm"]["email"].value;
-                let sal=document.forms["ContactForm"]["salutation"].value;
-                let prof1=document.forms["ContactForm"]["profession"].value;
-                let prof2=document.forms["ContactForm"]["otherProfession"].value;
-                let gen=document.forms["ContactForm"]["gender"].value;
-                let mes=document.forms["ContactForm"]["message"].value;
+            function contactDataValidation() {
+                let firstName = document.querySelector('.contactForm [name="First name"]').value;
+                let lastName = document.querySelector('.contactForm [name="Last name"]').value;
+                let email = document.querySelector('.contactForm [name="e-mail"]').value;
 
-
-                if(n=="" || ln=="" || em==""){ 
-                    alert("First name, last name and e-mail section must be filled out ");
+                if (firstName === "" || lastName === "" || email === "") {
+                    alert("All fields must be filled out.");
                     return false;
                 }
-               // if(prof1 == "Other"){
-                    
-               // }
-            }
-        </script>
-
-        <script src="https://smtpjs.com/v3/smtp.js"></script>
-
-        <script>
-            function sendEmail(){
-                Email.send({
-                    Host : "smtp.elasticemail.com",
-                    Username : "elena.barbu1997@gmail.com",
-                    Password : "70AD3A757D134F7EFBB3C525965C43F75ECA",
-                    To : 'elena.barbu1997@gmail.com',
-                    From : document.getElementById("email").value,
-                    Subject : "New contact form",
-                    Body : "And this is the body"
-                }).then(
-                message => alert(message)
-                );
-            }
+                return true;
+            }    
         </script>
     </body>
+    
 
 </html>
