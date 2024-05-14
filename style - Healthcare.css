@@ -300,6 +300,7 @@ html{
 
 
 /*Search container*/
+.searchContainer
 .searchContainer {
     display: flex;
     flex-direction:column;
@@ -310,8 +311,9 @@ html{
     margin-bottom: 20px;
     margin: 0 auto;*/
     width: 100%;
+ 
     }
-
+.searchBar{animation:fadeIn 3s}
 .searchBar{
     width: 100%;
     max-width: 300px;
@@ -342,9 +344,14 @@ html{
     height: 40px;
     background:#f0bb92af;
     cursor: pointer;
+    
 }
 
 
+.searchBar button:hover{
+    width: 45px;
+    height: 45px;
+}
 
 
 
